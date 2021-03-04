@@ -1,15 +1,27 @@
-
+import NavBar from './components/navbar/NavBar';
+import ItemListContainer from './components/itemlistcontainer/ItemListContainer'
 import './App.css';
-import NavBar from './components/NavBar';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container } from 'react-bootstrap';
+
 
 function App() {
+
+  const greeting = {
+    title: "Termo",
+    text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus, eaque voluptates, laudantium itaque expedita, molestiae ad eius sapiente laboriosam.",
+    stock: "Disponible"  
+  }
+
   return (
     <div className="App">
-      <header>
+      
         <NavBar />
-      </header>
+
+        <Container className="mt-3">
+          <ItemListContainer greeting={greeting}/>
+        </Container>
     </div>
   );
 }
