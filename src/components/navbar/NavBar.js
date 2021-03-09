@@ -17,8 +17,9 @@ export default function NavBar(){
     return(
         <>
     <Navbar collapseOnSelect className="navbar" expand="lg" bg="dark" variant="dark">
-    <Navbar.Brand href="#home">MateArte <CartWidget/></Navbar.Brand>
-    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+    <Navbar.Brand href="#home">MateArte <a href="#/" className="cart-icon"><CartWidget icon="opencart"/></a></Navbar.Brand>
+    
+    <Navbar.Toggle aria-controls="responsive-navbar-nav"/>    
     <Navbar.Collapse id="responsive-navbar-nav">
         
         <Nav className="ml-auto mr-5 pr-3">
@@ -33,10 +34,11 @@ export default function NavBar(){
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action/3.4">Equipos Completos</NavDropdown.Item>
             </NavDropdown>
-        
+                       
         </Nav>
         
     </Navbar.Collapse>
+    
     </Navbar>
 </>
         

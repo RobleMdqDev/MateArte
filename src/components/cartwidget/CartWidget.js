@@ -3,10 +3,10 @@ import FontAwesome from 'react-fontawesome'
 
 
 
-export default function CartWidget (){
+export default function CartWidget (props){
     
     return (
-        <FontAwesome name='paint-brush' />
+        <FontAwesome name={props.icon} />
     )
     
 }

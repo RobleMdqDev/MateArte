@@ -11,7 +11,7 @@ function App() {
   const greeting = {
     title: "Termo",
     text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus, eaque voluptates, laudantium itaque expedita, molestiae ad eius sapiente laboriosam.",
-    stock: "Disponible"  
+    stock: 100  
   }
 
   return (
