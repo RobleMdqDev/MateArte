@@ -1,41 +1,57 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-// Bootstrap components
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import ListGroupItem from 'react-bootstrap/ListGroupItem';
+import ItemList from './ItemList';
 
-import ImageCap from "../../assets/img/imagecap.svg"
-import ItemCount from '../itemcount/ItemCount';
+export default function ItemListContainer (){
+  
+  const [item, setItem] = useState();
 
-
-export default function ItemListContainer ({greeting}){
-
-    let {title, text, stock} = greeting;
-
-    const [stockActual, setStockActual] = useState(stock)
-
+  const greeting = [
+    {
+    id: 1,
+    title: "Termo",    
+    descripcion: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus, eaque voluptates.",
+    price: 500,
+    pictureUrl: "./img/termo.png",
+    stock: 100  
+    },
+    {
+      id: 2,
+      title: "Mate",    
+      descripcion: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus, eaque voluptates.",
+      price: 300,
+      pictureUrl: "./img/mate.png",
+      stock: 500  
+      },
+      {
+        id: 3,
+        title: "Bombilla",    
+        descripcion: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus, eaque voluptates.",
+        price: 100,
+        pictureUrl: "./img/bombilla.png",
+        stock: 1200  
+        }
+  ];
     
-    const handleStock = (stockResta) => {
-        
-        setStockActual(stockActual - stockResta);
-        console.log({stockResta: stockResta})
-        console.log({stockActualItemList: stockActual})
-    }
+  const promise = new Promise ((res, req) => {
+      setTimeout(()=>{
+        res(greeting)
+      }, 2000);
+  });
 
-    return(
-        <Card className="bg-light" style={{ width: '18rem'}}>
-        <Card.Img variant="top" src={ImageCap} />
-        <Card.Body>
-            <Card.Title>{title}</Card.Title>
-            <Card.Text>{text}</Card.Text>
-        </Card.Body>
-        <ListGroup className="list-group-flush">            
-            <ListGroupItem>Stock {stockActual}</ListGroupItem>
-        </ListGroup>
+  useEffect(() => {
+    promise.then((res)=>{
+      setItem(res);
 
-        <ItemCount stock={stockActual} initial={1} onAdd={handleStock} />        
-       
-        </Card>
-    )
+    }).catch((req)=>{
+        console.log({error:req.message});
+    });
+    
+
+  });
+  
+    return (
+        <ItemList item={greeting}/>
+    );
+
 }
