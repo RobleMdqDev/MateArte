@@ -2,15 +2,49 @@
     background: linear-gradient(90deg, rgba(147, 32, 130, 1) 0%, rgba(0, 0, 0, 1) 100%);
 }
 
+.navbar img {
+    width: 160px;
+    transition: all 0.5s ease;
+}
+
+.navbar img:hover {
+    transform: scale(1.1);
+}
+
 a.navbar-brand {
     font-size: 1.5rem;
 }
 
+a.nav-link {
+    font-size: 1.5rem
+}
+
+@media (min-width: 980px) {
+    a.nav-link {
+        font-size: 1.2rem
+    }
+}
+
 .cart-icon {
+    position: fixed;
+    top: 90%;
+    left: 85%;
     color: #fff;
-    font-size: 25px;
+    background-color: rgba(147, 32, 130, 1);
+    border-radius: 3px;
+    border: 2px solid rgb(92, 19, 81);
+    font-size: 40px;
     margin-left: 10px;
     padding: 3px 8px;
+}
+
+@media (min-width: 990px) {
+    .cart-icon {
+        position: -ms-page;
+        top: 20px;
+        left: 92%;
+        font-size: 35px;
+    }
 }
 
 .cart-icon:hover {

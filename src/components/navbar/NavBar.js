@@ -9,20 +9,20 @@ import './navbar.css'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-
+import logo from '../../assets/img/logomatearte.svg';
 
 
 export default function NavBar(){
     
     return(
         <>
-    <Navbar collapseOnSelect className="navbar" expand="lg" bg="dark" variant="dark">
-    <Navbar.Brand href="#home">MateArte <a href="#/" className="cart-icon"><CartWidget icon="opencart"/></a></Navbar.Brand>
+    <Navbar collapseOnSelect sticky="top" className="navbar" expand="lg" bg="dark" variant="dark">
+    <Navbar.Brand href="#home"><img src={logo} alt="logo matearte"/> <a href="#/" className="cart-icon"><CartWidget icon="opencart"/></a></Navbar.Brand>
     
     <Navbar.Toggle aria-controls="responsive-navbar-nav"/>    
     <Navbar.Collapse id="responsive-navbar-nav">
         
-        <Nav className="ml-auto mr-5 pr-3">
+        <Nav className="nav-link">
         
             <Nav.Link href="#features">Nosotros</Nav.Link>
             <Nav.Link href="#pricing">Ofertas</Nav.Link>

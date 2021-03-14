@@ -13,7 +13,7 @@ function App() {
       
         <NavBar />
         <Container className="mt-3">
-          <Row>
+          <Row className="justify-content-center">
             <ItemListContainer />
           </Row>
         </Container>
