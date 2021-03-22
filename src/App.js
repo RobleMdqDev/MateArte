@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       
         <NavBar />
-        <Container className="mt-3">
+        <Container fluid className="mt-3">
           <Row className="justify-content-center">
             <ItemListContainer />
           </Row>

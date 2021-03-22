@@ -1,11 +1,13 @@
 import Item from './Item'
 
-const ItemList = props => (props.item).map(items =>{
-   return <Item key={items.id} item={items} />
-})
-        
-   
+const ItemList = ({items}) => {   
     
+   return (
+      items.map(item => 
+         <Item key={item.id} items={item} />
+      ) 
+   )
+}
     
 
 export default ItemList;

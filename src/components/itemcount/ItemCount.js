@@ -35,7 +35,7 @@ const ItemCount = ({stock, initial, onAdd}) =>{
     }
 
     useEffect(() => {
-        if(stock==0){
+        if(stock===0){
             setVariant("danger")
         }
     }, [stock])
