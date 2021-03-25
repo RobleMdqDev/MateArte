@@ -1,8 +1,7 @@
 import React from 'react'
 import { Container, Row } from 'react-bootstrap';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Item from './components/item/Item';
-import ItemList from './components/itemlist/ItemList';
+
 import ItemListContainer from './components/itemlistcontainer/ItemListContainer';
 import NavBar from './components/navbar/NavBar';
 
