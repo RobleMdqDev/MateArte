@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 
-import ItemList from './ItemList';
+import ItemList from '../itemlist/ItemList';
 
 import mockItems from '../../assets/mockItems'
+import { useParams } from 'react-router';
 
 export default function ItemListContainer (){
+
+  const {idCategory, discounts, id} = useParams();
   
   const [items, setItems] = useState([]);
   
@@ -13,7 +16,7 @@ export default function ItemListContainer (){
       setTimeout(()=> {
         res(mockItems);
    
-      }, 2000);
+      }, 1000);
       
     }).then((res)=>{
       
@@ -23,13 +26,12 @@ export default function ItemListContainer (){
     .catch((req)=>{
         console.log({error:req.message});
     });
-    
 
   },[]);
   
-    
     return (
-        <ItemList items={items}/>
-    );
+      <ItemList items={items} idCategory={idCategory} discounts={discounts} id={id}/>
+  );
+    
 
 }

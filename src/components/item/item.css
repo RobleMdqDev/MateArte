@@ -1,0 +1,98 @@
+.card {
+    overflow: hidden;
+    transition: all 0.5s ease;
+    max-height: 46rem;
+}
+
+h3 {
+    position: relative;
+    top: -90px;
+    z-index: 800;
+    display: block;
+    background-color: rgba(14, 210, 236, 0.884);
+    padding: 5px!important;
+    letter-spacing: 3px;
+    color: white;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    z-index: 1000;
+    box-shadow: 0 0 15px black;
+}
+
+.card img {
+    height: 24rem;
+    transition: all 0.5s ease;
+}
+
+.card .card-body {
+    padding: 0;
+    margin: 0;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+    background-size: cover;
+}
+
+.card-title {
+    position: relative;
+    top: -300px;
+    width: 100%;
+    padding: 1.2rem;
+    margin: 0;
+    color: white;
+    background-color: rgba(14, 210, 236, 0.884);
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
+    letter-spacing: 4px;
+    transition: all 0.5s ease;
+    transform: skew(0deg, 10deg);
+}
+
+.card:hover .card-title {
+    top: -10px;
+    transform: skew(0deg, 0deg);
+}
+
+.card-text {
+    visibility: collapse;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(14, 210, 236, 0.884);
+    transition: all 0.3s ease-in;
+    padding: 10px;
+    margin: 0;
+    z-index: 500;
+}
+
+.card:hover .card-text {
+    visibility: visible;
+}
+
+h3 {
+    padding: 1rem;
+}
+
+.item-a {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    text-decoration: none;
+    color: unset;
+    height: 31rem;
+}
+
+.item-a:hover {
+    text-decoration: none;
+    color: unset;
+}
+
+.item {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

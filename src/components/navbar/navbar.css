@@ -1,5 +1,5 @@
 .navbar {
-    background: linear-gradient(90deg, rgba(147, 32, 130, 1) 0%, rgba(0, 0, 0, 1) 100%);
+    background: linear-gradient(90deg, rgba(199, 19, 172, 0.911) 30%, rgba(0, 0, 0, 1) 100%);
 }
 
 .navbar img {
@@ -11,17 +11,51 @@
     transform: scale(1.1);
 }
 
-a.navbar-brand {
+.navbar-brand a {
     font-size: 1.5rem;
 }
 
-a.nav-link {
-    font-size: 1.5rem
+.nav-link a {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: rgba(255, 253, 253, 0.842)!important;
+}
+
+.nav-link a:hover {
+    color: rgb(77, 207, 240)!important;
+}
+
+.currentCategory {
+    border-bottom: 2px solid rgb(77, 207, 240);
+}
+
+.dropdown-menu.show {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.dropdown-menu.show a {
+    padding: 10px;
+    margin: 0;
+    color: black!important;
+}
+
+.dropdown-menu.show a:hover {
+    background-color: #e1e1e1;
 }
 
 @media (min-width: 980px) {
-    a.nav-link {
-        font-size: 1.2rem
+    .nav-link {
+        margin-left: 30px;
+    }
+    .nav-link a {
+        font-size: 1.2rem;
+        margin: 10px 30px 0 10px;
+    }
+    .nav-item a {
+        margin: 3px 30px 0 10px;
     }
 }
 
