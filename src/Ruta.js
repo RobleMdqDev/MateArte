@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import ItemListContainer from './components/itemlistcontainer/ItemListContainer';
 import NavBar from './components/navbar/NavBar';
+import Page404 from './pages/Page404';
 
 
 const Ruta = ()=>{
@@ -23,9 +24,9 @@ const Ruta = ()=>{
               
               <Route exact path='/' component={ItemListContainer} />
                 
-              <Route exact path='*'>
-                <h1>404 NotFound</h1>
-              </Route>
+              <Route exact path='*' component={Page404} />
+                
+              
             </Switch>
           </Row>
         </Container>
