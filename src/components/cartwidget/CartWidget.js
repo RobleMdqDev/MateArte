@@ -1,12 +1,6 @@
-import React from 'react'
-import FontAwesome from 'react-fontawesome'
+import React from "react";
+import FontAwesome from "react-fontawesome";
 
+const CartWidget = (props) => <FontAwesome name={props.icon} />;
 
-
-export default function CartWidget (props){
-    
-    return (
-        <FontAwesome name={props.icon} />
-    )
-    
-}
+export default CartWidget;

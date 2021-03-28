@@ -1,35 +1,32 @@
-import React, { useState } from 'react'
+import { useEffect, useState } from "react";
+import ItemDetail from "../itemdetail/ItemDetail";
 
-import ItemDetail from '../itemdetail/ItemDetail'
+const ItemDetailContainer = ({ id, title, descripcion, price, pictureUrl }) => {
 
-const ItemDetailContainer = ({id, title, descripcion, price, pictureUrl})=>{
+  const [itemHTML, setItemHTML] = useState("");
 
-    const [itemHTML, setItemHTML] = useState("");
 
-    // const getItem = ()=>{
+ useEffect(() => {
 
-    //     new Promise((res, req)=>{
-    //         setTimeout(()=> {
-    //           res();
-         
-    //         }, 0);
-            
-    //       }).then((res)=>{
-            
-    //           setItemHTML(res);
-              
-    //       })    
-    //       .catch((req)=>{
-    //           console.log({error:req.message});
-           
-    //       });
+    new Promise((res, req)=>{
+      setTimeout(()=> {
+      
+        res(<ItemDetail id={id} title={title} descripcion={descripcion} price={price} pictureUrl={pictureUrl} />);
 
-    // }
+      }, 2000);       
 
-    // getItem()
-    
-    return <ItemDetail id={id} title={title} descripcion={descripcion} price={price} pictureUrl={pictureUrl} />;
-    
-}
+    }).then((res)=>{
+        setItemHTML(res)
+    }).catch((err)=>{
+      console.log({message: err.message});
+    });  
 
-export default ItemDetailContainer
+ }, [id]);
+
+    return itemHTML
+
+  }
+
+  
+
+export default ItemDetailContainer;

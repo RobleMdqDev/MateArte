@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 
-import ItemList from '../itemlist/ItemList';
+import ItemList from "../itemlist/ItemList";
 
-import mockItems from '../../data/mockItems'
-import { useParams } from 'react-router';
+import mockItems from "../../data/mockItems";
+import { useParams } from "react-router";
 
 export default function ItemListContainer() {
   const { idCategory, discounts, id } = useParams();
@@ -16,11 +16,10 @@ export default function ItemListContainer() {
     new Promise((res, req) => {
       setTimeout(() => {
         res(mockItems);
-      }, 0);
+      }, 500);
     })
       .then((res) => {
         setItems(res);
-        console.log("Recarga: : items");
       })
       .catch((req) => {
         console.log({ error: req.message });
@@ -28,6 +27,7 @@ export default function ItemListContainer() {
   }, []);
 
   useEffect(() => {
+
     setAuxHtml(items);
 
     if (discounts) setAuxHtml(items.filter((item) => item.discount === true));
@@ -35,7 +35,7 @@ export default function ItemListContainer() {
     if (idCategory) setAuxHtml(items.filter((item) => item.idCategory === parseInt(idCategory)));
 
     if (id) setAuxHtml(items.filter((item) => item.id === parseInt(id)));
-    
+
   }, [id, idCategory, discounts, items]);
 
   return auxHtml ? <ItemList items={auxHtml} /> : <ItemList items={items} />;
