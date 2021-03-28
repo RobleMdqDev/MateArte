@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import ItemDetail from "../itemdetail/ItemDetail";
+import Loader from '../loader/Loader'
 
 const ItemDetailContainer = ({ id, title, descripcion, price, pictureUrl }) => {
 
-  const [itemHTML, setItemHTML] = useState("");
+  const [itemHTML, setItemHTML] = useState(<Loader />);
 
 
  useEffect(() => {

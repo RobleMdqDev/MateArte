@@ -11,7 +11,8 @@ import ItemCount from "../itemcount/ItemCount";
 import ItemDetailContainer from "../itemdetailcontainer/ItemDetailContainer";
 import { Link } from "react-router-dom";
 
-const Item = ({ items }) => {
+const Item = ({ items, style="bg-light m-3" }) => {
+
   const { id, title, descripcion, price, stock, pictureUrl } = items;
   const [stockActual, setStockActual] = useState(stock);
   const [finCompra, setFinCompra] = useState("");
@@ -32,10 +33,10 @@ const Item = ({ items }) => {
       </Link>
     );
   };
-
+   
   return (
     <>
-      <Card key={id} className='bg-light m-3 card' style={{ width: "24rem" }}>
+      <Card key={id} className={style}>
         {finCompra}
         <ItemDetailContainer
           id={id}

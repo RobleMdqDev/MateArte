@@ -16,7 +16,7 @@ export default function ItemListContainer() {
     new Promise((res, req) => {
       setTimeout(() => {
         res(mockItems);
-      }, 500);
+      }, 2000);
     })
       .then((res) => {
         setItems(res);
@@ -28,13 +28,13 @@ export default function ItemListContainer() {
 
   useEffect(() => {
 
-    setAuxHtml(items);
+    setAuxHtml(items);   
 
-    if (discounts) setAuxHtml(items.filter((item) => item.discount === true));
+    if (idCategory) return setAuxHtml(items.filter((item) => item.idCategory === parseInt(idCategory)));
 
-    if (idCategory) setAuxHtml(items.filter((item) => item.idCategory === parseInt(idCategory)));
+    if (id) return setAuxHtml (items.filter((item) => item.id === parseInt(id)));
 
-    if (id) setAuxHtml(items.filter((item) => item.id === parseInt(id)));
+    if (discounts) return setAuxHtml(items.filter((item) => item.discount === true));
 
   }, [id, idCategory, discounts, items]);
 

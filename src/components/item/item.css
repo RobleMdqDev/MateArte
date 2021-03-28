@@ -2,6 +2,52 @@
     overflow: hidden;
     transition: all 0.5s ease;
     max-height: 46rem;
+    width: 24rem;
+}
+
+@media (min-width: 780px) {
+    .card-one .card-text {
+        visibility: visible;
+        position: absolute;
+        width: 500px;
+        height: 300px;
+        left: 50%;
+    }
+    .card-one {
+        display: flex;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        height: 80vh;
+        width: 90%;
+        max-width: 800px;
+    }
+    .card-one img {
+        width: 50%;
+        height: 500px!important;
+    }
+    .card:hover.card-one {
+        transform: scale(1);
+    }
+    .card:hover.card-one img {
+        transform: scale(1);
+    }
+    .card-one .card-title {
+        position: absolute;
+        left: 50%;
+        top: 350px;
+        width: 50%;
+        transform: skew(0deg, 0deg);
+    }
+    .card:hover.card-one .card-title {
+        top: 340px;
+        transform: skew(0deg, 0deg);
+    }
+    .card-one h3 {
+        position: absolute;
+        width: 50%;
+        left: 50%;
+        top: 450px;
+    }
 }
 
 h3 {
