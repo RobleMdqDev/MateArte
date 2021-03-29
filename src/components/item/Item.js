@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./item.css";
 
@@ -10,12 +10,14 @@ import { Alert } from "react-bootstrap";
 import ItemCount from "../itemcount/ItemCount";
 import ItemDetailContainer from "../itemdetailcontainer/ItemDetailContainer";
 import { Link } from "react-router-dom";
+import BadgeItem from "../badgeItem/BadgeItem";
 
 const Item = ({ items, style="bg-light m-3" }) => {
 
   const { id, title, descripcion, price, stock, pictureUrl } = items;
   const [stockActual, setStockActual] = useState(stock);
   const [finCompra, setFinCompra] = useState("");
+  const [badgeCount, setBadgeCount] = useState(0)
 
   let stockHTML = <Alert variant='success'>Stock {stockActual}</Alert>;
 
@@ -31,13 +33,17 @@ const Item = ({ items, style="bg-light m-3" }) => {
       <Link to={`/cart`} className='btn btn-info finCompra'>
         Finalizar Compra
       </Link>
-    );
+    );     
   };
-   
+
+  useEffect(() => {
+    setBadgeCount(stock - stockActual);
+  }, [stockActual]);
+  
   return (
     <>
       <Card key={id} className={style}>
-        {finCompra}
+        <BadgeItem color="white" bkgColor="magenta" cantidad={badgeCount}/>        
         <ItemDetailContainer
           id={id}
           title={title}
@@ -47,8 +53,9 @@ const Item = ({ items, style="bg-light m-3" }) => {
         />
         <ListGroup className='list-group-flush'>{stockHTML}</ListGroup>
         <ItemCount stock={stockActual} initial={1} onAdd={handleStock} />
+        {finCompra}
       </Card>
-
+     
       <br />
     </>
   );

@@ -3,51 +3,7 @@
     transition: all 0.5s ease;
     max-height: 46rem;
     width: 24rem;
-}
-
-@media (min-width: 780px) {
-    .card-one .card-text {
-        visibility: visible;
-        position: absolute;
-        width: 500px;
-        height: 300px;
-        left: 50%;
-    }
-    .card-one {
-        display: flex;
-        overflow: hidden;
-        transition: all 0.5s ease;
-        height: 80vh;
-        width: 90%;
-        max-width: 800px;
-    }
-    .card-one img {
-        width: 50%;
-        height: 500px!important;
-    }
-    .card:hover.card-one {
-        transform: scale(1);
-    }
-    .card:hover.card-one img {
-        transform: scale(1);
-    }
-    .card-one .card-title {
-        position: absolute;
-        left: 50%;
-        top: 350px;
-        width: 50%;
-        transform: skew(0deg, 0deg);
-    }
-    .card:hover.card-one .card-title {
-        top: 340px;
-        transform: skew(0deg, 0deg);
-    }
-    .card-one h3 {
-        position: absolute;
-        width: 50%;
-        left: 50%;
-        top: 450px;
-    }
+    transition: all 0s ease;
 }
 
 h3 {
@@ -109,10 +65,11 @@ h3 {
     font-weight: bold;
     color: white;
     background-color: rgba(14, 210, 236, 0.884);
-    transition: all 0.3s ease-in;
+    transition: all 0.3s ease;
     padding: 10px;
     margin: 0;
     z-index: 500;
+    text-align: right;
 }
 
 .card:hover .card-text {
@@ -151,4 +108,63 @@ h3 {
     font-size: 1.1rem;
     letter-spacing: 3px;
     font-weight: bold;
+    background-color: blueviolet;
+    border: none;
+}
+
+.finCompra:hover {
+    background-color: rgb(102, 31, 168);
+}
+
+@media (min-width: 780px) {
+    .card-one .card-text {
+        visibility: visible;
+        position: absolute;
+        width: 50%;
+        height: 300px;
+        left: 50%;
+        transition: all 0s ease;
+        font-size: 1.3rem;
+        text-align: center;
+        letter-spacing: 2px;
+        padding-top: 60px;
+    }
+    .card-one {
+        display: flex;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        height: 80vh;
+        width: 90%;
+        max-width: 800px;
+        transition: all 0s ease-in-out;
+    }
+    .card-one img {
+        width: 50%;
+        height: 500px!important;
+    }
+    .card:hover.card-one {
+        transform: scale(1);
+        transition: all 0s ease;
+    }
+    .card:hover.card-one img {
+        transform: scale(1);
+        transition: all 0s ease;
+    }
+    .card-one .card-title {
+        position: absolute;
+        left: 50%;
+        top: 350px;
+        width: 50%;
+        transform: skew(0deg, 0deg);
+    }
+    .card:hover.card-one .card-title {
+        top: 340px;
+        transform: skew(0deg, 0deg);
+    }
+    .card-one h3 {
+        position: absolute;
+        width: 50%;
+        left: 50%;
+        top: 450px;
+    }
 }
