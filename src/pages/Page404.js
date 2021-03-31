@@ -4,25 +4,34 @@ import Hero from '../assets/img/hero3.jpg'
 const Page404 = ()=>{
 
     const styles404 = {
-        position: "relative",
-        top: "-50%",
-        margin: "auto",
+        
+        margin: "200px auto",
         padding: "5px",
         display: "block",
-        width: "28rem",
-        height: "20rem",
+        maxWidth: "28rem",
+        height: "fit-content",
         backgroundColor: "white",
         color: "black",
-        fontSize: "6rem",
+        fontSize: "400%",
         fontWeight: "bold",
         borderRadius: "20px", 
         zIndex: "5000"       
     };
 
+    const imgStyle = {
+        height: "80vh",
+        width: "100%",
+        backgroundSize: "cover",
+        overFlow: "hidden",
+        backgroundImage: "url("+Hero+")"
+        
+    }
+
     return(
-        <Container > 
-            <img src={Hero} alt="Hero 404"/>
+        <Container style={imgStyle}>    
+            {/* <img src={Hero} alt="Hero 404" style={{width:"100%"}}/>          */}
             <span style={styles404}>404 NOT FOUND!</span>
+            
         </Container> 
     )
     

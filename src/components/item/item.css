@@ -1,30 +1,44 @@
 .card {
     overflow: hidden;
+    position: relative;
     transition: all 0.5s ease;
-    max-height: 46rem;
+    max-height: 39rem;
     width: 24rem;
     transition: all 0s ease;
+    z-index: 1;
+    border: none;
+    background-color: blueviolet;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    z-index: 100;
+    box-shadow: 0 0 15px black;
+    box-sizing: content-box;
+}
+
+.itemCount {
+    position: relative;
+    top: -80px;
+    visibility: visible;
+    height: fit-content;
 }
 
 h3 {
     position: relative;
+    width: 50%;
     top: -90px;
     z-index: 800;
     display: block;
-    background-color: rgba(14, 210, 236, 0.884);
+    background-color: rgba(103, 1, 134, 0.884);
     padding: 5px!important;
     letter-spacing: 3px;
     color: white;
 }
 
-.card:hover {
-    transform: scale(1.03);
-    z-index: 1000;
-    box-shadow: 0 0 15px black;
-}
-
 .card img {
     height: 24rem;
+    background-color: transparent;
     transition: all 0.5s ease;
 }
 
@@ -40,40 +54,32 @@ h3 {
 
 .card-title {
     position: relative;
-    top: -300px;
+    top: -500px;
     width: 100%;
     padding: 1.2rem;
-    margin: 0;
+    margin: auto;
     color: white;
-    background-color: rgba(14, 210, 236, 0.884);
+    background-color: rgba(9, 118, 133, 0.884);
     font-size: 1.5rem;
     font-weight: bold;
     font-style: italic;
     letter-spacing: 4px;
     transition: all 0.5s ease;
-    transform: skew(0deg, 10deg);
-}
-
-.card:hover .card-title {
-    top: -10px;
-    transform: skew(0deg, 0deg);
+    height: 50px;
 }
 
 .card-text {
-    visibility: collapse;
+    position: relative;
+    top: -40px;
     font-size: 1.1rem;
     font-weight: bold;
     color: white;
-    background-color: rgba(14, 210, 236, 0.884);
+    background-color: rgba(9, 118, 133, 0.884);
     transition: all 0.3s ease;
     padding: 10px;
     margin: 0;
     z-index: 500;
     text-align: right;
-}
-
-.card:hover .card-text {
-    visibility: visible;
 }
 
 h3 {
@@ -116,7 +122,34 @@ h3 {
     background-color: rgb(102, 31, 168);
 }
 
+div .alert {
+    position: relative;
+    top: -52px;
+    width: 50%;
+    left: 50%;
+    padding: 8px 10px;
+    border-radius: 0;
+    z-index: 1000;
+}
+
 @media (min-width: 780px) {
+    div.card-one.card {
+        display: flex;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        height: 100%;
+        width: 90%;
+        max-width: 800px;
+        transition: all 0s ease-in-out;
+    }
+    .card-one img {
+        width: 50%;
+        height: 500px!important;
+        transition: all 0.5s ease;
+    }
+    .card-one img {
+        transform: scale(1)!important;
+    }
     .card-one .card-text {
         visibility: visible;
         position: absolute;
@@ -127,44 +160,37 @@ h3 {
         font-size: 1.3rem;
         text-align: center;
         letter-spacing: 2px;
-        padding-top: 60px;
+        padding-top: 90px;
     }
-    .card-one {
-        display: flex;
-        overflow: hidden;
-        transition: all 0.5s ease;
-        height: 80vh;
-        width: 90%;
-        max-width: 800px;
-        transition: all 0s ease-in-out;
-    }
-    .card-one img {
+    .card-one .card-title {
+        position: absolute;
+        height: fit-content;
+        left: 50%;
+        top: 270px;
         width: 50%;
-        height: 500px!important;
+        transform: skew(0deg, 0deg);
+    }
+    .card:hover.card-one .card-title {
+        top: 275px;
     }
     .card:hover.card-one {
         transform: scale(1);
         transition: all 0s ease;
     }
-    .card:hover.card-one img {
-        transform: scale(1);
-        transition: all 0s ease;
-    }
-    .card-one .card-title {
-        position: absolute;
-        left: 50%;
-        top: 350px;
-        width: 50%;
-        transform: skew(0deg, 0deg);
-    }
-    .card:hover.card-one .card-title {
-        top: 340px;
-        transform: skew(0deg, 0deg);
-    }
     .card-one h3 {
-        position: absolute;
+        position: relative;
         width: 50%;
         left: 50%;
-        top: 450px;
+        top: -150px;
+    }
+    .card-one .finCompra {
+        position: relative;
+        left: 50%;
+        top: -310px;
+        width: 50%;
+    }
+    .card-one .itemCount {
+        position: relative;
+        top: -72px;
     }
 }

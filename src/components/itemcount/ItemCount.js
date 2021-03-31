@@ -36,9 +36,9 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   }, [stock]);
 
   return (
-    <form id='counterForm'>
+    <form id='counterForm' className="itemCount">
       <br />
-      <ButtonGroup>
+      <ButtonGroup >
         <Button variant={variant} value='-' onClick={(e) => handleCounter(e)}>
           -
         </Button>
@@ -60,8 +60,6 @@ const ItemCount = ({ stock, initial, onAdd }) => {
           max={stock}
           onChange={(changeEvent) => setContador(changeEvent.target.value)}
         />
-      </Form.Group>
-      <Card.Body className='p-1'>
         <Button
           variant={"outline-" + variant}
           name='submit'
@@ -72,7 +70,10 @@ const ItemCount = ({ stock, initial, onAdd }) => {
           block>
           Agregar
         </Button>
-      </Card.Body>
+      </Form.Group>
+      
+        
+     
     </form>
   );
 };
