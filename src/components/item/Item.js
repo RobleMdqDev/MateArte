@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import "./item.css";
 
@@ -12,8 +12,11 @@ import ItemDetailContainer from "../itemdetailcontainer/ItemDetailContainer";
 import { Link } from "react-router-dom";
 import BadgeItem from "../badgeItem/BadgeItem";
 
+
+
 const Item = ({ items, style="bg-light m-3" }) => {
 
+ 
   const { id, title, descripcion, price, stock, pictureUrl } = items;
   const [stockActual, setStockActual] = useState(stock);
   const [finCompra, setFinCompra] = useState("");
@@ -29,6 +32,7 @@ const Item = ({ items, style="bg-light m-3" }) => {
 
   const handleStock = (stockResta) => {
     setStockActual(stockActual - stockResta);
+   
     setFinCompra(
       <Link to={`/cart`} className='btn btn-info finCompra'>
         Finalizar Compra
