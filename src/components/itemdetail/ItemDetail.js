@@ -7,13 +7,14 @@ const ItemDetail = ({ id, title, descripcion, price, pictureUrl }) => {
     <>
       <Link className='item-a' to={`/item/${id}`}>
       <Card.Img variant='top' src={pictureUrl} alt={pictureUrl} />
-        <Card.Text>{descripcion}</Card.Text>
-        <Card.Body>
-          <Card.Title>{title}</Card.Title>
-          <h3>${price}</h3>
-        </Card.Body>
       </Link>
-    </>
+   
+        <p className="card-text">{descripcion}</p>
+      <div className="card-body">
+        <Card.Title>{title}</Card.Title>
+        <h3>${price}</h3>
+      </div>
+      </>
   );
 };
 

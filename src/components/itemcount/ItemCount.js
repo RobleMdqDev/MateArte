@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Button, ButtonGroup, Card, Form, InputGroup } from "react-bootstrap";
+import { Button, ButtonGroup, Form, InputGroup } from "react-bootstrap";
 import RangeSlider from "react-bootstrap-range-slider";
 import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
+import "../item/item.css";
 
 const ItemCount = ({ stock, initial, onAdd }) => {
   const [contador, setContador] = useState(initial);
@@ -61,7 +62,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
           onChange={(changeEvent) => setContador(changeEvent.target.value)}
         />
         <Button
-          variant={"outline-" + variant}
+          variant={variant}
           name='submit'
           type='sumbit'
           onClick={(e) => {

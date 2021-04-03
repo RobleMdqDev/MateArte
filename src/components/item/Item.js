@@ -55,7 +55,7 @@ const Item = ({ items, style="bg-light m-3" }) => {
           price={price}
           pictureUrl={pictureUrl}
         />
-        <ListGroup className='list-group-flush'>{stockHTML}</ListGroup>
+        {stockHTML}
         <ItemCount stock={stockActual} initial={1} onAdd={handleStock} />
         {finCompra}
       </Card>
