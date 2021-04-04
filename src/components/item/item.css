@@ -203,7 +203,7 @@ form.itemCount:hover {
     .card:hover.card-one div.card-body {
         transform: translateY(0);
         z-index: 1;
-        border-radius: 5px 5px 5px 5px;
+        border-radius: 0px 5px 5px 5px;
     }
     .card:hover.card-one div.card-body::after {
         transform: translateY(0) skewX(-40deg);

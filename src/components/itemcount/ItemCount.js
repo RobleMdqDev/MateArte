@@ -4,7 +4,7 @@ import RangeSlider from "react-bootstrap-range-slider";
 import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
 import "../item/item.css";
 
-const ItemCount = ({ stock, initial, onAdd }) => {
+const ItemCount = ({ stock, initial, onAdd, onRemove }) => {
   const [contador, setContador] = useState(initial);
   const [variant, setVariant] = useState("info");
 
@@ -70,6 +70,14 @@ const ItemCount = ({ stock, initial, onAdd }) => {
           }}
           block>
           Agregar
+        </Button>
+        <Button
+          variant={variant}
+          name='button'
+          type='button'
+          onClick={() => onRemove()}
+          block>
+          Eliminar
         </Button>
       </Form.Group>
       

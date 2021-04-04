@@ -1,5 +1,8 @@
-import "./App.css";
+import React from 'react';
+import CartProvider from './contexts/cartcontext/CartProvider';
 
+
+import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Ruta from "./Ruta";
@@ -7,7 +10,9 @@ import Ruta from "./Ruta";
 function App() {
   return (
     <div className='App'>
-      <Ruta />
+      <CartProvider >
+        <Ruta />
+      </CartProvider>
     </div>
   );
 }

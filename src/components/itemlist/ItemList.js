@@ -4,8 +4,6 @@ const ItemList = ({ items }) => {
 
     const style = "bg-light m-3 card-one"
 
-    console.log(items);
-    
     return items.length === 1 ? <Item key={items[0].id} items={items[0]} style={style}/> : items.map((item) => <Item key={item.id} items={item} />);
 
 }
