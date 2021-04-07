@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Badge } from 'react-bootstrap';
 
-const BadgeItem = ({color, bkgColor, cantidad})=>{
+const BadgeItem = ({color="white", bkgColor="red", cantidad})=>{
     
     const style = {
         position: "absolute",

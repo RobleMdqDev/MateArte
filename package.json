@@ -7,6 +7,8 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.3",
     "bootstrap": "^4.6.0",
+    "firebase": "^8.3.2",
+    "firebase-app": "0.0.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.0",
     "react-bootstrap-range-slider": "^2.0.2",

@@ -31,11 +31,11 @@ export default function ItemListContainer() {
     setAuxHtml(items);   
 
     if (idCategory) return setAuxHtml(items.filter((item) => item.idCategory === parseInt(idCategory)));
-
+    console.log("paso de idCategory");
     if (id) return setAuxHtml (items.filter((item) => item.id === parseInt(id)));
-
+    console.log("paso de id");
     if (discounts) return setAuxHtml(items.filter((item) => item.discount === true));
-
+    console.log("paso de discounts");
   }, [id, idCategory, discounts, items]);
 
   return auxHtml ? <ItemList items={auxHtml} /> : <ItemList items={items} />;

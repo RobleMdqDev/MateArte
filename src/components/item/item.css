@@ -79,6 +79,19 @@ h3 {
     top: 0px;
 }
 
+@media (max-width: 600px) {
+    .card img {
+        width: 100%;
+    }
+    .card:hover img {
+        transform: scale(0.25) translate(-520px, -450px)!important;
+        border-radius: 100%;
+        z-index: 100;
+        width: 110%;
+        height: 350px;
+    }
+}
+
 .card:hover img {
     transform: scale(0.25) translate(-820px, -690px);
     border-radius: 100%;
@@ -161,6 +174,14 @@ form.itemCount:hover {
 
 .finCompra:hover {
     background-color: rgb(102, 31, 168);
+}
+
+#deleteButton {
+    position: absolute;
+    width: fit-content;
+    border-radius: 100%;
+    top: 0;
+    right: 10px;
 }
 
 @media (min-width: 780px) {

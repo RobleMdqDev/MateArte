@@ -27,7 +27,7 @@ export default function NavBar() {
             <img src={logo} alt='logo matearte' />
           </Navbar.Brand>
         </NavLink>
-        <NavLink to={`/cart`} className='cart-icon'>
+        <NavLink to={`/cart`} className='cart'>
           <CartWidget icon='opencart' />
         </NavLink>
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />

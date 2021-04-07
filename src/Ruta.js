@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Cart from "./components/cart/Cart";
 
 import ItemListContainer from "./components/itemlistcontainer/ItemListContainer";
 import NavBar from "./components/navbar/NavBar";
@@ -24,6 +25,8 @@ const Ruta = () => {
               path='/category/:idCategory'
               component={ItemListContainer}
             />
+
+            <Route exact path='/cart' component={Cart} />
 
             <Route exact path='/item/:id' component={ItemListContainer} />
 

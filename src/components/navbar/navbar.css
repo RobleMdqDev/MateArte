@@ -66,7 +66,7 @@
     }
 }
 
-.cart-icon {
+.cart {
     position: fixed;
     bottom: 10px;
     right: 10px;
@@ -83,14 +83,25 @@
 }
 
 @media (min-width: 990px) {
-    .cart-icon {
+    .cart {
         position: absolute;
         top: 10px;
         right: 20px;
     }
 }
 
-.cart-icon:hover {
+.cart div {
+    position: relative;
+    top: -10px;
+    left: -20px;
+}
+
+.cart-icon {
+    transition: transform 0.5s ease;
+    text-decoration: none;
+}
+
+.cart:hover .cart-icon {
     color: #fff;
     border-radius: 100%;
     transform: rotate(360deg);

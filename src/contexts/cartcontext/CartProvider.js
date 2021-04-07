@@ -7,7 +7,8 @@ const CartProvider = ({ defaultValue = [], children }) =>{
     const addItem = ( item, quantity ) =>{
         console.log(cart);
         if (isInCart(item.id) !== -1) {        
-            return cart[isInCart(item.id)].quantity += parseInt(quantity)
+            cart[isInCart(item.id)].quantity += parseInt(quantity);
+            return setCart([...cart]);
         }
         setCart([
             ...cart, 

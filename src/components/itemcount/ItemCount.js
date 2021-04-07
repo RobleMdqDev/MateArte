@@ -33,6 +33,8 @@ const ItemCount = ({ stock, initial, onAdd, onRemove }) => {
   useEffect(() => {
     if (stock === 0) {
       setVariant("danger");
+    }else{
+      setVariant("info");
     }
   }, [stock]);
 
@@ -73,11 +75,11 @@ const ItemCount = ({ stock, initial, onAdd, onRemove }) => {
         </Button>
         <Button
           variant={variant}
-          name='button'
+          id='deleteButton'
           type='button'
           onClick={() => onRemove()}
           block>
-          Eliminar
+          X
         </Button>
       </Form.Group>
       
