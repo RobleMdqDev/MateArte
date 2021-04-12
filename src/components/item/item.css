@@ -232,3 +232,47 @@ form.itemCount:hover {
         z-index: -1;
     }
 }
+
+div.card.card-cart {
+    height: 250px;
+}
+
+.card-cart .card-text {
+    display: none;
+}
+
+.card-cart img {
+    transform: scale(0.25) translate(-820px, -690px);
+    border-radius: 100%;
+}
+
+.card-cart div.card-body {
+    transform: translateY(-472px);
+    z-index: 1;
+    border-radius: 5px 5px 5px 0;
+}
+
+.card-cart div.card-body::after {
+    transform: translateY(128px) skewX(45deg);
+    left: 15px;
+    z-index: -1;
+}
+
+.card-cart .itemCount {
+    top: 100px;
+    z-index: 2;
+}
+
+.card-cart .itemCount:hover {
+    top: 100px;
+    z-index: 2;
+}
+
+.card-cart .item-a {
+    height: 0;
+    width: 0;
+}
+
+.card-cart .finCompra {
+    display: none;
+}

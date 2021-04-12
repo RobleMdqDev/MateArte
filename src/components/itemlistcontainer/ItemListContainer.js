@@ -1,42 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import ItemList from "../itemlist/ItemList";
 
-import mockItems from "../../data/mockItems";
+import 'firebase/firestore'
+
 import { useParams } from "react-router";
+import ProductContext from "../../contexts/productcontext/ProductContext";
 
 export default function ItemListContainer() {
+
+  const {items} = useContext(ProductContext)
+
   const { idCategory, discounts, id } = useParams();
 
-  const [items, setItems] = useState([]);
-
-  const [auxHtml, setAuxHtml] = useState();
-
-  useEffect(() => {
-    new Promise((res, req) => {
-      setTimeout(() => {
-        res(mockItems);
-      }, 2000);
-    })
-      .then((res) => {
-        setItems(res);
-      })
-      .catch((req) => {
-        console.log({ error: req.message });
-      });
-  }, []);
-
+  const [auxHtml, setAuxHtml] = useState();  
+  const [style, setStyle] = useState("")
+  
   useEffect(() => {
 
     setAuxHtml(items);   
 
     if (idCategory) return setAuxHtml(items.filter((item) => item.idCategory === parseInt(idCategory)));
-    console.log("paso de idCategory");
-    if (id) return setAuxHtml (items.filter((item) => item.id === parseInt(id)));
-    console.log("paso de id");
+    
+    if (id){
+       setStyle("bg-light m-3 card-one");
+       return setAuxHtml (items.filter((item) => item.id === parseInt(id)));
+    }
+    
     if (discounts) return setAuxHtml(items.filter((item) => item.discount === true));
-    console.log("paso de discounts");
+    
   }, [id, idCategory, discounts, items]);
 
-  return auxHtml ? <ItemList items={auxHtml} /> : <ItemList items={items} />;
+  return auxHtml ? <ItemList items={auxHtml} style={style} /> : <ItemList items={items} style={style}/>;
 }

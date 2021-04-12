@@ -11,17 +11,19 @@ import ItemDetailContainer from "../itemdetailcontainer/ItemDetailContainer";
 import { Link } from "react-router-dom";
 import BadgeItem from "../badgeItem/BadgeItem";
 import CartContext from '../../contexts/cartcontext/CartContext'
+import ProductContext from "../../contexts/productcontext/ProductContext";
 
 
 
 const Item = ({ items, style="bg-light m-3" }) => {
+ console.log(items);
+  const {addItem, removeItem} = useContext(CartContext);
+  const {addQuantity, removeQuantity} = useContext(ProductContext)
 
-  const {addItem, removeItem} = useContext(CartContext)
-
-  const { id, title, descripcion, price, stock, pictureUrl } = items;
-  const [stockActual, setStockActual] = useState(stock);
+  const { id, title, descripcion, price, stock, pictureUrl, quantity, index } = items;
+  const [stockActual, setStockActual] = useState(stock - quantity);
   const [finCompra, setFinCompra] = useState("");
-  const [badgeCount, setBadgeCount] = useState(0)
+  const [badgeCount, setBadgeCount] = useState(quantity)
 
   let stockHTML = <Alert variant='success'>Stock {stockActual}</Alert>;
 
@@ -36,6 +38,8 @@ const Item = ({ items, style="bg-light m-3" }) => {
     
     addItem(items, stockResta);
 
+    addQuantity(stockResta, index);
+
     setFinCompra(
       <Link to={`/cart`} className='btn btn-info finCompra'>
         Finalizar Compra
@@ -47,16 +51,17 @@ const Item = ({ items, style="bg-light m-3" }) => {
     removeItem(id);
     setBadgeCount(0);
     setStockActual(stock);
+    removeQuantity(index)
   }
 
   useEffect(() => {
-    setBadgeCount(stock - stockActual);
+    setBadgeCount(stock - quantity);
   }, [stockActual]);
   
   return (
     <>
       <Card key={id} className={style}>
-        <BadgeItem color="white" bkgColor="magenta" cantidad={badgeCount}/>        
+        <BadgeItem color="white" bkgColor="magenta" cantidad={quantity}/>        
         <ItemDetailContainer
           id={id}
           title={title}

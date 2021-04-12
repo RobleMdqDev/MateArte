@@ -8,20 +8,15 @@ const ItemDetailContainer = ({ id, title, descripcion, price, pictureUrl }) => {
 
 
  useEffect(() => {
-
-    new Promise((res, req)=>{
-      setTimeout(()=> {
-      
-        res(<ItemDetail id={id} title={title} descripcion={descripcion} price={price} pictureUrl={pictureUrl} />);
-
-      }, 2000);       
-
-    }).then((res)=>{
-        setItemHTML(res)
-    }).catch((err)=>{
-      console.log({message: err.message});
-    });  
-
+   setItemHTML(
+     <ItemDetail
+       id={id}
+       title={title}
+       descripcion={descripcion}
+       price={price}
+       pictureUrl={pictureUrl}
+     />
+   );
  }, [id]);
 
     return itemHTML

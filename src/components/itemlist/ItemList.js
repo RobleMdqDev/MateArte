@@ -1,10 +1,8 @@
 import Item from "../item/Item";
 
-const ItemList = ({ items }) => {
+const ItemList = ({ items, style }) => {    
 
-    const style = "bg-light m-3 card-one"
-
-    return items.length === 1 ? <Item key={items[0].id} items={items[0]} style={style}/> : items.map((item) => <Item key={item.id} items={item} />);
+    return items.length === 1 ? <Item key={items[0].index} items={items[0]} style={style}/> : items.map((item) => <Item key={item.id} items={item} style={style}/>);
 
 }
 export default ItemList;
