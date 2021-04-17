@@ -14,7 +14,7 @@ export default function ItemListContainer() {
   const { idCategory, discounts, id } = useParams();
 
   const [auxHtml, setAuxHtml] = useState();  
-  const [style, setStyle] = useState("")
+  const [style, setStyle] = useState("bg-light m-3")
   
   useEffect(() => {
 
@@ -22,11 +22,8 @@ export default function ItemListContainer() {
 
     if (idCategory) return setAuxHtml(items.filter((item) => item.idCategory === parseInt(idCategory)));
     
-    if (id){
-       setStyle("bg-light m-3 card-one");
-       return setAuxHtml (items.filter((item) => item.id === parseInt(id)));
-    }
-    
+    if (id) return setAuxHtml (items.filter((item) => item.id === parseInt(id)));
+        
     if (discounts) return setAuxHtml(items.filter((item) => item.discount === true));
     
   }, [id, idCategory, discounts, items]);

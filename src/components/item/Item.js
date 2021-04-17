@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 
 import "./item.css";
 
@@ -14,17 +14,15 @@ import CartContext from '../../contexts/cartcontext/CartContext'
 import ProductContext from "../../contexts/productcontext/ProductContext";
 
 
-
 const Item = ({ items, style="bg-light m-3" }) => {
- console.log(items);
+ 
   const {addItem, removeItem} = useContext(CartContext);
   const {addQuantity, removeQuantity} = useContext(ProductContext)
 
   const { id, title, descripcion, price, stock, pictureUrl, quantity, index } = items;
   const [stockActual, setStockActual] = useState(stock - quantity);
   const [finCompra, setFinCompra] = useState("");
-  const [badgeCount, setBadgeCount] = useState(quantity)
-
+  
   let stockHTML = <Alert variant='success'>Stock {stockActual}</Alert>;
 
   if (stockActual === 0) {
@@ -48,15 +46,10 @@ const Item = ({ items, style="bg-light m-3" }) => {
   };
 
   const onRemove = ()=>{
-    removeItem(id);
-    setBadgeCount(0);
+    removeItem(id);    
     setStockActual(stock);
     removeQuantity(index)
-  }
-
-  useEffect(() => {
-    setBadgeCount(stock - quantity);
-  }, [stockActual]);
+  }  
   
   return (
     <>

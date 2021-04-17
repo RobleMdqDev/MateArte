@@ -18,13 +18,13 @@ const ItemCount = ({ stock, initial, onAdd, onRemove }) => {
     if (e.target.type === "range" && stock >= contador) {
       setContador(e.target.value);
     }
-    console.log(contador);
+    
   };
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
     if (stock !== 0) {
-      console.log({ stockActualItemCount: stock });
+      
       onAdd(contador);
       setContador(initial);
     }
@@ -56,7 +56,7 @@ const ItemCount = ({ stock, initial, onAdd, onRemove }) => {
       <Form.Group controlId='formBasicRange'>
         <RangeSlider
           variant={variant}
-          className='p-3'
+          className='p-2'
           value={contador}
           name='range'
           min={initial}

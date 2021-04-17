@@ -3,9 +3,9 @@ import CartContext from "./CartContext";
 const CartProvider = ({ defaultValue = [], children }) =>{
     
     const [cart, setCart] = useState(defaultValue);
-    
+    console.log(cart);
     const addItem = ( item, quantity ) =>{
-        console.log(cart);
+        
         if (isInCart(item.id) !== -1) {        
             cart[isInCart(item.id)].quantity += parseInt(quantity);
             return setCart([...cart]);
