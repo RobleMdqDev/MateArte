@@ -5,12 +5,16 @@ import SignForm from "./SignForm";
 import "./login.css";
 import { Button } from "react-bootstrap";
 import ProductContext from "../../contexts/productcontext/ProductContext";
+import { getFirestore } from "../../configs/firebase";
 
 
-export default function Login({handleModal}) {
+export default function Login() {
 
   //HOOK PARA LOGIN CONTEXT
-  const {setUser, user} = useContext(ProductContext);
+  const {setUser, user, setViewLogin} = useContext(ProductContext);
+
+  // HOOK PARA FIRESTORE
+  const [db, setDb] = useState(getFirestore());
 
   //HOOK PARA ESTADO DE FORMULARIO
   const [formMood, setFormMood] = useState("/login");
@@ -18,7 +22,7 @@ export default function Login({handleModal}) {
   // HOOK PARA INICIAR SESIÓN
 
   const [loginForm, setLoginForm] = useState({
-    user: "",
+    email: "",
     pass: ""
   });
 
@@ -72,51 +76,85 @@ export default function Login({handleModal}) {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    handleModal();
-  //   console.log({ query: query });
 
-  //   const respuesta = await loginAPI(query, formMood);
-  //   if (respuesta.status !== 200) {
-  //     setLoginAlert(
-  //       <p className='text-danger alert alert-danger'>{respuesta.message}</p>
-  //     );
-  //     if (loginDiv) {
-  //       loginDiv.classList.add("vibra");
-  //       setTimeout(() => {
-  //         loginDiv.classList.remove("vibra");
-  //       }, 500);
-  //     }
+    if (formMood === "/login") {
+   
+      // Consulto en base de datos
+      const userLogin = db.collection("users");
+      userLogin.get().then((res) => {
+          console.log("loginForm: ",loginForm);
+          const aux = res.docs.map((d) => ({ id: d.id, ...d.data() }));
+          console.log(aux);
+          const userLog = aux.filter((u) => u.email === loginForm.email && u.pass === loginForm.pass);
+          console.log("final: ", userLog[0]);
+          if (userLog[0] !== undefined) {
+            console.log("final: ", userLog[0]);
+            setUser({ ...userLog[0] });
+            setTimeout(() => {
+              setViewLogin();
+            }, 1000);
+            setLoginAlert(
+              <p className='text-success alert alert-success'>LOGIN CORRECTO!</p>
+            );
+            loginDiv.classList.add("agrandar");
+            setTimeout(() => {
+              loginDiv.classList.remove("agrandar");
+            }, 500);
+          } else {
+          setLoginAlert(
+            <p className='text-danger alert alert-danger'>Datos Incorrectos!</p>
+          );
+          if (loginDiv) {
+            loginDiv.classList.add("vibra");
+            setTimeout(() => {
+              loginDiv.classList.remove("vibra");
+            }, 500);
+          }
+          document.querySelector("form").reset();
+        }
+      });
+    } else {
 
-  //     document.querySelector("form").reset();
-  //   } else {
-      if (formMood === "/login") {
-          setUser({...loginForm, phone: "472-4818"});
-          console.log(user);
-  //       setLoginAlert(
-  //         <p className='text-success alert alert-success'>LOGIN SUCCESS!</p>
-  //       );
-  //       localStorage.setItem("ACCESS_TOKEN", respuesta.token.token);
-  //       localStorage.setItem("USER", respuesta.user);
-  //       localStorage.setItem("USER_ID", respuesta.token.user_id[0].id);
-  //       console.log(respuesta);
 
-  //       setTimeout(() => {
-  //         window.location.href = "/";
-  //       }, 1000);
-      } else {
-  //       setLoginAlert(
-  //         <p className='text-success alert alert-success'>SIGN-UP SUCCESS!</p>
-  //       );
-  //       setTimeout(() => {
-  //         window.location.href = "/";
-  //       }, 1000);
+      const sign = db.collection("users");
+      sign.get().then((res) => {
+        console.log("signForm: ",signForm);
+        const aux = res.docs.map((d) => ({ id: d.id, ...d.data() }));
+        console.log(aux);
+        const userLog = aux.filter((u) => u.email === signForm.email);
+        console.log("final: ", userLog[0]);
+        if (userLog[0] === undefined) {
+          console.log("finalSign: ", userLog[0]);
+          console.log("Orden de compra: ", signForm);
+          sign.add(signForm);
+          setLoginAlert(
+              <p className='text-success alert alert-success'>SIGN-UP SUCCESS!</p>
+          );
+          setTimeout(() => {
+          setFormMood("/login");
+          }, 1000);
+          loginDiv.classList.add("agrandar");
+          setTimeout(() => {
+            loginDiv.classList.remove("agrandar");
+          }, 500);
+        } else {
+        setLoginAlert(
+          <p className='text-danger alert alert-danger'>Datos Incorrectos!</p>
+        );
+        if (loginDiv) {
+          loginDiv.classList.add("vibra");
+          setTimeout(() => {
+            loginDiv.classList.remove("vibra");
+          }, 500);
+        }
+        document.querySelector("form").reset();
       }
+    });
+      
+    }
 
-  //     loginDiv.classList.add("agrandar");
-  //     setTimeout(() => {
-  //       loginDiv.classList.remove("agrandar");
-  //     }, 500);
-  //   }
+    
+    
   };
 
   // HOOK que contiene el formulario
@@ -151,7 +189,7 @@ export default function Login({handleModal}) {
     <div className='login'>
       
       {form}
-      <Button variant="info" value='X' className="modalLogin" onClick={(e) => handleModal(e)}>
+      <Button variant="info" value='X' className="modalLogin" onClick={(e) => setViewLogin()}>
         X
       </Button>
     </div>

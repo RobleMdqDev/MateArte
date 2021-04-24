@@ -39,9 +39,10 @@ const ItemCount = ({ stock, initial, onAdd, onRemove }) => {
   }, [stock]);
 
   return (
-    <form id='counterForm' className="itemCount">
-      <br />
-      <ButtonGroup >
+    <form className="itemCount">
+      
+      <Form.Group className="mt-2" controlId='formBasicRange'>
+      <ButtonGroup className="mt-1">
         <Button variant={variant} value='-' onClick={(e) => handleCounter(e)}>
           -
         </Button>
@@ -53,10 +54,9 @@ const ItemCount = ({ stock, initial, onAdd, onRemove }) => {
           +
         </Button>
       </ButtonGroup>
-      <Form.Group controlId='formBasicRange'>
+      
         <RangeSlider
           variant={variant}
-          className='p-2'
           value={contador}
           name='range'
           min={initial}
@@ -67,24 +67,22 @@ const ItemCount = ({ stock, initial, onAdd, onRemove }) => {
           variant={variant}
           name='submit'
           type='sumbit'
+          className="mt-3"
           onClick={(e) => {
             handleOnSubmit(e);
           }}
-          block>
+          >
           Agregar
         </Button>
-        <Button
-          variant={variant}
-          id='deleteButton'
+        
+      </Form.Group>        
+      <button          
+          className='deleteButton bg-danger'
           type='button'
           onClick={() => onRemove()}
-          block>
+          >
           X
-        </Button>
-      </Form.Group>
-      
-        
-     
+        </button>
     </form>
   );
 };

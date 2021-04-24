@@ -15,13 +15,14 @@ const Cart = () => {
       No Hay Items en el Carrito <Link to={"/"}>Volver!</Link>
     </p>
   ) : (
-    <Container>
-      <Row className='p-2'>
+    <Container fluid>      
+     <Row className='p-2 mt-3 mb-3 d-flex justify-content-center'>
         <CartTotal cart={cart} />
       </Row>
-      <Row className='d-flex justify-content-center p-2'>
+      <Row className='d-flex justify-content-center p-2 border-top'>
         <ItemList items={cart} style={style} />
       </Row>
+      
     </Container>
   );
 };

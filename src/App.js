@@ -14,6 +14,7 @@ function App() {
   const [db, setDb] = useState(getFirestore());
   const [user, setUser] = useState("");
   const [orderCollection, setOrderCollection] = useState("");
+  const [viewLogin, setViewLogin] = useState();
 
   console.log(orderCollection);
   
@@ -51,8 +52,9 @@ function App() {
   return (
     <div className='App'>
       <CartProvider >
-        <ProductContext.Provider value={{items, setItems, addQuantity, removeQuantity, setUser, user, orderCollection, setOrderCollection}}>
+        <ProductContext.Provider value={{items, setItems, addQuantity, removeQuantity, setUser, user, orderCollection, setOrderCollection, setViewLogin}}>
           <Ruta />
+          {viewLogin}
         </ProductContext.Provider>
       </CartProvider>
     </div>

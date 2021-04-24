@@ -22,7 +22,7 @@ export default function ItemListContainer() {
 
     if (idCategory) return setAuxHtml(items.filter((item) => item.idCategory === parseInt(idCategory)));
     
-    if (id) return setAuxHtml (items.filter((item) => item.id === parseInt(id)));
+    if (id) return setAuxHtml (items.filter((item) => item.id === id));
         
     if (discounts) return setAuxHtml(items.filter((item) => item.discount === true));
     

@@ -1,5 +1,6 @@
 import React from 'react'
 import "./login.css";
+import logo from '../../assets/img/logomatearte.svg'
 
 export default function LoginForm ({form, login, mood, loginAlert}){
     
@@ -19,14 +20,14 @@ export default function LoginForm ({form, login, mood, loginAlert}){
           onSubmit={(e) => {
             handleLogin(e);
           }}>
-          <h2 className='text-light'>Log-in</h2>
+          <img src={logo} alt='logo matearte' style={{width: "100%"}} />
           <hr className="bg-light"/>
           <div className='form-group'>
             <input
               className='form-control'
-              type='text'
-              name='user'
-              placeholder='Username'
+              type='email'
+              name='email'
+              placeholder='E-mail'
             />
           </div>
 

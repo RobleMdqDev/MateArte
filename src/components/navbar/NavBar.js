@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import CartWidget from "../cartwidget/CartWidget";
 
 // Estilos CSS
 import "./navbar.css";
+import FontAwesome from "react-fontawesome";
 
 // Bootstrap components
 import Navbar from "react-bootstrap/Navbar";
@@ -11,8 +12,14 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../../assets/img/logomatearte.svg";
 import { NavLink } from "react-router-dom";
+import ProductContext from "../../contexts/productcontext/ProductContext";
+import Login from "../login/Login";
+
 
 export default function NavBar() {
+
+  const {setViewLogin, user} = useContext(ProductContext);
+
   return (
     <>
       <Navbar
@@ -65,7 +72,7 @@ export default function NavBar() {
                 className='text-dark'>
                 Termos
               </NavLink>
-
+              
               <NavDropdown.Divider />
 
               <NavLink
@@ -76,6 +83,15 @@ export default function NavBar() {
                 Equipos Completos
               </NavLink>
             </NavDropdown>
+            <NavLink to={'#'}                           
+                
+                className=''
+                onClick={()=>{setViewLogin(<Login />)}}
+                >              
+                <FontAwesome name="user" className='user mr-2' />
+                {user.name}
+            </NavLink>
+
           </Nav>
         </Navbar.Collapse>
       </Navbar>

@@ -132,8 +132,6 @@ p.card-text {
     color: unset;
 }
 
-.item {}
-
 .finCompra {
     position: absolute;
     top: 355px;
@@ -191,14 +189,15 @@ form.itemCount:hover {
     z-index: 10;
 }
 
-#deleteButton {
+button.deleteButton {
     position: absolute;
-    width: fit-content;
     border-radius: 100%;
-    width: 40px!important;
-    height: 40px!important;
-    top: -5px;
+    width: 30px!important;
+    height: 30px!important;
+    top: 5px;
     right: 10px;
+    border: none;
+    color: white;
 }
 
 @media (min-width: 780px) {
@@ -251,7 +250,7 @@ form.itemCount:hover {
         left: 8px;
         z-index: -1;
     }
-    .card-one #deleteButton {
+    .card-one .deleteButton {
         margin: 20px 0px;
     }
 }

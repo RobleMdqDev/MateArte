@@ -1,0 +1,14 @@
+div.ventana {
+    position: absolute;
+    top: -400px;
+    left: 0;
+    height: 200vh;
+    width: 100%;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(189, 189, 189, 0.37);
+    z-index: 1;
+    backdrop-filter: blur(0.15rem);
+}

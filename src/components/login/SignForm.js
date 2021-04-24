@@ -1,5 +1,6 @@
 import React from 'react'
 import "./login.css";
+import logo from '../../assets/img/logomatearte.svg'
 
 const SignForm = ({form, login, mood, loginAlert})=>{
    
@@ -16,7 +17,7 @@ const SignForm = ({form, login, mood, loginAlert})=>{
           onSubmit={(e) => {
             handleLogin(e);
           }}>
-          <h2 className='text-light'>Sign Up</h2>
+          <img src={logo} alt='logo matearte' style={{width: "100%"}} />
           <hr className='bg-light' />
           <div className='input-group mb-3'>
             <input
@@ -54,7 +55,7 @@ const SignForm = ({form, login, mood, loginAlert})=>{
               className='form-control'
               name='phone'
               autoComplete='off'
-              placeholder='Phone'
+              placeholder='Telefono'
             />
           </div>
 

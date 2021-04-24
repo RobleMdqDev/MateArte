@@ -5,6 +5,7 @@ import Cart from "./components/cart/Cart";
 
 import ItemListContainer from "./components/itemlistcontainer/ItemListContainer";
 import NavBar from "./components/navbar/NavBar";
+import Login from "./components/login/Login"
 import Page404 from "./pages/Page404";
 
 const Ruta = () => {
@@ -29,6 +30,8 @@ const Ruta = () => {
             <Route exact path='/cart' component={Cart} />
 
             <Route exact path='/item/:id' component={ItemListContainer} />
+
+            <Route exact path='/login' component={Login} />
 
             <Route exact path='/' component={ItemListContainer} />
 

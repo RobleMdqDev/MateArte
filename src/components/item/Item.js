@@ -40,7 +40,7 @@ const Item = ({ items, style="bg-light m-3" }) => {
 
     setFinCompra(
       <Link to={`/cart`} className='btn btn-info finCompra'>
-        Finalizar Compra
+        Ir al carrito!
       </Link>
     );     
   };

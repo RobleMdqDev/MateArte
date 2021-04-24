@@ -3,16 +3,16 @@ import { Button } from "react-bootstrap";
 import { getFirestore } from "../../configs/firebase";
 import ProductContext from "../../contexts/productcontext/ProductContext";
 
-import Login from '../login/Login';
+import Login from '../login/Login'
 import ViewModal from "../viewmodal/ViewModal";
 
 const CartTotal = ({ cart }) => {
 
-  const {user, setOrderCollection, orderCollection} = useContext(ProductContext);
+  const {user, setOrderCollection, orderCollection, setViewLogin} = useContext(ProductContext);
   const [db, setDb] = useState(getFirestore());
-
-  const [total, setTotal] = useState(0);
   const [viewModal, setViewModal] = useState();
+  const [total, setTotal] = useState(0);
+  
 
   const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}-${current.getHours()}:${current.getMinutes()}:${current.getSeconds()}:${current.getMilliseconds()}`;
@@ -27,31 +27,32 @@ const CartTotal = ({ cart }) => {
         .map((item) => item.quantity * item.price)
         .reduce((acc, quantity) => acc + quantity, 0)
     );
-  }, [cart]);
+
+    const items = cart.map(item => (
+      {
+        id: item.id,
+        title: item.title,
+        price: item.price,
+        quantity: item.quantity
+      }
+    ));
+    setOrderCollection({
+      buyer: user,
+      items: items,
+      date: date,
+      total: total
+    });    
+
+  }, [cart, user, total]);
 
   const finCompra = async ()=> {   
+    
     if (user === "") {
-      setViewModal(        
+      setViewLogin(        
         <Login handleModal={handleClose} />        
       ); 
     }else{
-      
-      const items = cart.map(item => (
-        {
-          id: item.id,
-          title: item.title,
-          price: item.price,
-          quantity: item.quantity
-        }
-      ));
-
-      setOrderCollection({
-        buyer: user,
-        items: items,
-        date: date,
-        total: total
-      });
-      
+                  
       let errorStock = [];
 
       const comprobarStock = async ()=>{
