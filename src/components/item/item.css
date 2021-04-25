@@ -23,13 +23,13 @@ div.card-body {
     transition: all 0.5s ease;
 }
 
-.card:hover div.card-body {
+.card.active div.card-body {
     transform: translateY(-302px);
     z-index: 1;
     border-radius: 5px 5px 5px 0;
 }
 
-.card:hover div.card-body::after {
+.card.active div.card-body::after {
     transform: translateY(78px) skewX(45deg);
     left: 9.5px;
     z-index: -1;
@@ -59,6 +59,25 @@ h3 {
     text-align: right;
 }
 
+#description {
+    position: relative;
+    z-index: 10;
+    bottom: -116px;
+    left: 100%;
+    width: fit-content;
+    height: fit-content;
+    padding: 3px;
+    font-size: 23px;
+    border-radius: 0 30% 30% 0;
+    background-color: #f0047f;
+    border: none;
+}
+
+.card-one #description,
+.card-cart #description {
+    display: none;
+}
+
 .card-title {
     width: 100%;
     padding: 5px;
@@ -84,7 +103,7 @@ h3 {
     .card img {
         width: 100%;
     }
-    .card:hover img {
+    .card.active img {
         transform: scale(0.25) translate(-520px, -450px)!important;
         border-radius: 100%;
         z-index: 100;
@@ -93,7 +112,7 @@ h3 {
     }
 }
 
-.card:hover img {
+.card.active img {
     transform: scale(0.25) translate(-480px, -450px);
     border-radius: 100%;
     z-index: 100;
@@ -116,7 +135,7 @@ p.card-text {
     border-radius: 5px;
 }
 
-.card:hover p.card-text {
+.card.active p.card-text {
     opacity: 1;
 }
 
@@ -184,10 +203,6 @@ div.alert {
     padding: 5px 20px!important;
 }
 
-form.itemCount:hover {
-    visibility: visible;
-    z-index: 10;
-}
 
 button.deleteButton {
     position: absolute;
@@ -220,7 +235,7 @@ button.deleteButton {
         left: -25px;
         z-index: -10;
     }
-    .card:hover.card-one img {
+    .card.active.card-one img {
         transform: scale(1) translate(0);
         border-radius: 0;
         z-index: 100;
@@ -240,12 +255,12 @@ button.deleteButton {
     .card-one .finCompra {
         top: 455px;
     }
-    .card:hover.card-one div.card-body {
+    .card.active.card-one div.card-body {
         transform: translateY(0);
         z-index: 1;
         border-radius: 0px 5px 5px 5px;
     }
-    .card:hover.card-one div.card-body::after {
+    .card.active.card-one div.card-body::after {
         transform: translateY(0) skewX(-40deg);
         left: 8px;
         z-index: -1;
@@ -268,7 +283,7 @@ div.card.card-cart {
     border-radius: 100%;
 }
 
-.card-cart:hover img {
+.card-cart.active img {
     transform: scale(0.25) translate(-500px, -420px);
     border-radius: 100%;
 }
@@ -279,7 +294,7 @@ div.card.card-cart {
     border-radius: 5px 5px 5px 0;
 }
 
-.card-cart:hover div.card-body {
+.card-cart.active div.card-body {
     transform: translateY(-305px);
     z-index: 1;
     border-radius: 5px 5px 5px 0;
@@ -291,7 +306,7 @@ div.card.card-cart {
     z-index: -1;
 }
 
-.card-cart:hover div.card-body::after {
+.card-cart.active div.card-body::after {
     transform: translateY(77px) skewX(45deg);
     left: 9px;
     z-index: -1;

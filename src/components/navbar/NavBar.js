@@ -76,7 +76,7 @@ export default function NavBar() {
               {
                categories ? categories.map(category => (
                   <NavLink
-                  key={category.id}
+                  key={category.name}
                   exact
                   to={`/category/${category.id}`}
                   activeClassName='currentCategory'

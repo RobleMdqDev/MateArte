@@ -4,7 +4,7 @@ import "./item.css";
 
 // Bootstrap components
 import Card from "react-bootstrap/Card";
-import { Alert } from "react-bootstrap";
+import { Alert, Button } from "react-bootstrap";
 
 import ItemCount from "../itemcount/ItemCount";
 import ItemDetailContainer from "../itemdetailcontainer/ItemDetailContainer";
@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import BadgeItem from "../badgeItem/BadgeItem";
 import CartContext from '../../contexts/cartcontext/CartContext'
 import ProductContext from "../../contexts/productcontext/ProductContext";
+import FontAwesome from "react-fontawesome";
 
 
 const Item = ({ items, style="bg-light m-3" }) => {
@@ -50,10 +51,15 @@ const Item = ({ items, style="bg-light m-3" }) => {
     setStockActual(stock);
     removeQuantity(index)
   }  
+
+  const handleDescription = (e)=>{
+    e.target.parentNode.parentNode.classList.toggle("active");    
+  }
   
   return (
     <>
-      <Card key={id} className={style}>
+
+      <Card key={id} name="items" className={style}>
         <BadgeItem color="white" bkgColor="magenta" cantidad={quantity}/>        
         <ItemDetailContainer
           id={id}
@@ -64,7 +70,9 @@ const Item = ({ items, style="bg-light m-3" }) => {
         />
         {stockHTML}
         <ItemCount stock={stockActual} initial={1} onAdd={handleStock} onRemove={onRemove} />
-        {finCompra}
+        {finCompra} 
+        <Button id="description" type="button" onClick={(e)=>handleDescription(e)}><FontAwesome name="bars" className='bars'/></Button>
+
       </Card>
      
       <br />
