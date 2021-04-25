@@ -18,6 +18,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { NavLink } from "react-router-dom";
 import ProductContext from "../../contexts/productcontext/ProductContext";
 import Login from "../login/Login";
+import Loader from "../loader/Loader";
 
 
 export default function NavBar() {
@@ -73,7 +74,7 @@ export default function NavBar() {
             <NavDropdown title='Productos' id='collasible-nav-dropdown show'>
               
               {
-                categories.map(category => (
+               categories ? categories.map(category => (
                   <NavLink
                   key={category.id}
                   exact
@@ -83,6 +84,8 @@ export default function NavBar() {
                   {category.name}
                   </NavLink>
                 ))
+                :
+                <Loader />
               }
 
             </NavDropdown>

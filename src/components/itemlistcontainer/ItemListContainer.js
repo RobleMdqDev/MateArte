@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 
 import ItemList from "../itemlist/ItemList";
 
-import 'firebase/firestore'
-
 import { useParams } from "react-router";
 import ProductContext from "../../contexts/productcontext/ProductContext";
 
