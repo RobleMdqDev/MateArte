@@ -1,6 +1,6 @@
 div.ventana {
     position: absolute;
-    top: -400px;
+    top: 0;
     left: 0;
     height: 200vh;
     width: 100%;
@@ -11,4 +11,35 @@ div.ventana {
     background-color: rgba(189, 189, 189, 0.37);
     z-index: 1;
     backdrop-filter: blur(0.15rem);
+}
+
+div.resumen{
+    position: relative;
+    top: -200px;
+}
+
+button.print{
+        
+    border-radius: 0 50% 50% 0;
+    width: 40px;
+    height: 100px;
+    font-size: 25px;
+    padding: 0;
+    background-color: #802178;
+    border: none;
+}
+
+@media print{
+    div.ventana {
+        top: 0px;
+        height: 100%;
+    }
+
+    button.print{
+        display: none;
+    }
+
+    #aceptar{
+        display: none;
+    }
 }

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { ListGroup, Table } from 'react-bootstrap';
+import { Button, ListGroup, Table } from 'react-bootstrap';
 import { getFirestore } from "../../configs/firebase";
 import './viewmodal.css'
 
 import Loader from '../loader/Loader'
+import FontAwesome from 'react-fontawesome';
 
 
 
@@ -31,9 +32,13 @@ const ViewModal = ({date}) =>{
         window.location.reload();
     };
 
+    const handlePrint = ()=>{
+        window.print();
+    }
+
     return item === "" ? <Loader /> : (
         <div className="ventana">
-            <div className="bg-light p-3 rounded border border-secondary">
+            <div className="bg-light p-3 rounded border border-secondary resumen">
                 <h2 className="alert-success p-2 rounded">Tu compra fue realizada con exito!</h2>
                 <ListGroup className="mb-3">
                     <ListGroup.Item className="mb-2">Tu orden de compra es: <strong>{item.id}</strong> </ListGroup.Item>
@@ -60,9 +65,17 @@ const ViewModal = ({date}) =>{
                     </Table>
                     <ListGroup>
                     <ListGroup.Item>Total de la compra: {item.total}</ListGroup.Item>
-                    <ListGroup.Item variant="success" action onClick={()=>handleClose()}>Aceptar</ListGroup.Item>
+                    <ListGroup.Item variant="success" action onClick={()=>handleClose()} id="aceptar">Aceptar</ListGroup.Item>
+                    
                 </ListGroup>
+                
             </div>
+            <Button 
+                    className='print'
+                    onClick={()=>{handlePrint()}}
+                    >              
+                    <FontAwesome name="print" className='print mr-2'/>                        
+            </Button>
         </div>
     );        
     
