@@ -23,7 +23,7 @@ const SignForm = ({form, login, mood, loginAlert})=>{
             <input
               type='text'
               className='form-control'
-              name='user'
+              name='name'
               autoComplete='off'
               placeholder='Usuario'
             />

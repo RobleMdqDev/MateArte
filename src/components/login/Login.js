@@ -29,7 +29,7 @@ export default function Login() {
   // HOOK PARA REGISTRO
 
   const [signForm, setSignForm] = useState({
-    user: "",
+    name: "",
     email: "",
     pass: "",
     phone: ""

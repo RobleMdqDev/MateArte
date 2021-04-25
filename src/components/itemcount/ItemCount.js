@@ -6,7 +6,7 @@ import "../item/item.css";
 
 const ItemCount = ({ stock, initial, onAdd, onRemove }) => {
   const [contador, setContador] = useState(initial);
-  const [variant, setVariant] = useState("info");
+  const [variant, setVariant] = useState("");
 
   const handleCounter = (e) => {
     if (e.target.value === "-" && initial < contador) {
@@ -77,7 +77,7 @@ const ItemCount = ({ stock, initial, onAdd, onRemove }) => {
         
       </Form.Group>        
       <button          
-          className='deleteButton bg-danger'
+          className='deleteButton'
           type='button'
           onClick={() => onRemove()}
           >

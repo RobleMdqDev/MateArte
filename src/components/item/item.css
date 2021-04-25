@@ -126,7 +126,7 @@ p.card-text {
     height: 156px;
     font-size: 1rem;
     color: black;
-    background-color: #e6c3f7;
+    background-color: #fff1fd;
     transition: all 0.5s ease;
     padding: 20px 10px;
     margin: 0;
@@ -187,7 +187,7 @@ div.alert {
     margin: 0 auto;
     z-index: 0;
     padding: 0 20px;
-    background-color: #e6c3f7;
+    background-color: rgb(108, 41, 170);
 }
 
 .itemCount button {
@@ -213,6 +213,8 @@ button.deleteButton {
     right: 10px;
     border: none;
     color: white;
+    background-color: #f0047f;
+    border: 2px solid white;
 }
 
 @media (min-width: 780px) {
