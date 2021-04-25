@@ -1,6 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
+// Componentes
 import CartWidget from "../cartwidget/CartWidget";
+import logo from "../../assets/img/logomatearte.svg";
+ 
+// FireBase
+import { getFirestore } from '../../configs/firebase';
 
 // Estilos CSS
 import "./navbar.css";
@@ -10,7 +15,6 @@ import FontAwesome from "react-fontawesome";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import logo from "../../assets/img/logomatearte.svg";
 import { NavLink } from "react-router-dom";
 import ProductContext from "../../contexts/productcontext/ProductContext";
 import Login from "../login/Login";
@@ -19,7 +23,25 @@ import Login from "../login/Login";
 export default function NavBar() {
 
   const {setViewLogin, user} = useContext(ProductContext);
+  const [categories, setCategories] = useState("");
+  const [db, setDb] = useState(getFirestore());
 
+  useEffect(() => {
+    function getAll() {
+      const category = db.collection("categories");
+  
+      category.get().then((res) => {
+        
+        if (res.size > 0) {
+          const aux = res.docs.map((d) => ({id: d.id, ...d.data()}));
+          setCategories(aux);
+        }
+      });
+    }
+    getAll();
+    
+  }, [db]);
+  console.log(categories);
   return (
     <>
       <Navbar
@@ -49,39 +71,20 @@ export default function NavBar() {
             </NavLink>
 
             <NavDropdown title='Productos' id='collasible-nav-dropdown show'>
-              <NavLink
-                exact
-                to={`/category/${1}`}
-                activeClassName='currentCategory'
-                className='text-dark'>
-                Mates
-              </NavLink>
-
-              <NavLink
-                exact
-                to={`/category/${2}`}
-                activeClassName='currentCategory'
-                className='text-dark'>
-                Bombillas
-              </NavLink>
-
-              <NavLink
-                exact
-                to={`/category/${3}`}
-                activeClassName='currentCategory'
-                className='text-dark'>
-                Termos
-              </NavLink>
               
-              <NavDropdown.Divider />
+              {
+                categories.map(category => (
+                  <NavLink
+                  key={category.id}
+                  exact
+                  to={`/category/${category.id}`}
+                  activeClassName='currentCategory'
+                  className='text-dark'>
+                  {category.name}
+                  </NavLink>
+                ))
+              }
 
-              <NavLink
-                exact
-                to={`/category/${4}`}
-                activeClassName='currentCategory'
-                className='text-dark'>
-                Equipos Completos
-              </NavLink>
             </NavDropdown>
             <NavLink to={'#'}                           
                 
