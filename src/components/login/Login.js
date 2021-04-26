@@ -11,7 +11,7 @@ import { getFirestore } from "../../configs/firebase";
 export default function Login() {
 
   //HOOK PARA LOGIN CONTEXT
-  const {setUser, setViewLogin} = useContext(ProductContext);
+  const {setUser, setView} = useContext(ProductContext);
 
   // HOOK PARA FIRESTORE
   const [db] = useState(getFirestore());
@@ -91,7 +91,7 @@ export default function Login() {
             console.log("final: ", userLog[0]);
             setUser({ ...userLog[0] });
             setTimeout(() => {
-              setViewLogin();
+              setView();
             }, 1000);
             setLoginAlert(
               <p className='text-success alert alert-success'>LOGIN CORRECTO!</p>
@@ -189,7 +189,7 @@ export default function Login() {
       <div className='login'>
         
         {form}
-        <Button variant="info" value='X' className="modalLogin" onClick={(e) => setViewLogin()}>
+        <Button variant="info" value='X' className="modalLogin" onClick={(e) => setView()}>
           X
         </Button>
       </div>

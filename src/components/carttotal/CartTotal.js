@@ -8,8 +8,8 @@ import ViewModal from "../viewmodal/ViewModal";
 
 const CartTotal = ({ cart }) => {
 
-  const {user, setOrderCollection, orderCollection, setViewLogin} = useContext(ProductContext);
-  const [db, setDb] = useState(getFirestore());
+  const {user, setOrderCollection, orderCollection, setView} = useContext(ProductContext);
+  const [db] = useState(getFirestore());
   const [viewModal, setViewModal] = useState();
   const [total, setTotal] = useState(0);
   
@@ -48,7 +48,7 @@ const CartTotal = ({ cart }) => {
   const finCompra = async ()=> {   
     
     if (user === "") {
-      setViewLogin(        
+      setView(        
         <Login handleModal={handleClose} />        
       ); 
     }else{

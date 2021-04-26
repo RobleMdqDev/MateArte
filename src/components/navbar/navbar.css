@@ -34,6 +34,11 @@
     margin: auto;
 }
 
+.userLink{
+    display: flex;
+    flex-direction: row;
+}
+
 
 .dropdown-menu.show {
     display: flex;
@@ -67,10 +72,10 @@
     }
     .nav-link a {
         font-size: 1.1rem;
-        margin: 10px 30px 0 10px;
+        margin: 10px 10px 0 10px;
     }
     .nav-item a {
-        margin: 3px 30px 0 10px;
+        margin: 3px 10px 0 10px;
     }
 }
 

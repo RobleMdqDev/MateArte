@@ -9,12 +9,13 @@ import Ruta from "./Ruta";
 import ProductContext from './contexts/productcontext/ProductContext';
 import { getFirestore } from './configs/firebase';
 
+
 function App() {
   const [items, setItems] = useState([]);
   const [db] = useState(getFirestore());
   const [user, setUser] = useState("");
   const [orderCollection, setOrderCollection] = useState("");
-  const [viewLogin, setViewLogin] = useState();
+  const [view, setView] = useState();
 
   console.log(orderCollection);
   
@@ -52,9 +53,10 @@ function App() {
   return (
     <div className='App'>
       <CartProvider >
-        <ProductContext.Provider value={{items, setItems, addQuantity, removeQuantity, setUser, user, orderCollection, setOrderCollection, setViewLogin}}>
+        <ProductContext.Provider value={{items, setItems, addQuantity, removeQuantity, setUser, user, orderCollection, setOrderCollection, setView}}>
+          
           <Ruta />
-          {viewLogin}
+          {view}      
         </ProductContext.Provider>
       </CartProvider>
     </div>

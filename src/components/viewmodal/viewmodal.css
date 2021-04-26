@@ -15,11 +15,13 @@ div.ventana {
 
 div.resumen{
     position: relative;
-    top: -200px;
+    top: -300px;
 }
 
 button.print{
-        
+    position: relative;
+    top: -400px;   
+    left: 0px; 
     border-radius: 0 50% 50% 0;
     width: 40px;
     height: 80px;
@@ -31,6 +33,7 @@ button.print{
 
 @media print{
     div.ventana {
+        position: absolute;
         top: 0px;
         height: 100%;
     }

@@ -5,38 +5,56 @@ import './viewmodal.css'
 
 import Loader from '../loader/Loader'
 import FontAwesome from 'react-fontawesome';
-
-
-
+import { useParams } from 'react-router';
+import Page404 from '../../pages/Page404';
 
 const ViewModal = ({date}) =>{
-
+    
     const [item, setItem] = useState("")
-    const [db, setDb] = useState(getFirestore());
-
+    const [db] = useState(getFirestore());
+    const { orders } = useParams();
+console.log("order",orders)
     useEffect(() => {
         const itemCollection = db.collection('orders');
-        itemCollection.get().then(res=>{
+        if (date) {
+            itemCollection.get().then(res=>{        
+                if (res.size > 0) {
+                    const aux = res.docs.map((d) => ({id: d.id, ...d.data()}));
+                    console.log(aux);
+                    const items= aux.filter(items => items.date === date);
+                    setItem(items[0]) 
+                    console.log("finaldate: ", items[0]);
+                  }
+                })  
+        }
+        if (orders) {
+            itemCollection.get().then(res=>{        
+                if (res.size > 0) {
+                    const aux = res.docs.map((d) => ({id: d.id, ...d.data()}));
+                    console.log(aux);
+                    const items= aux.filter(items => items.id === orders);
+                    if (items.length > 0) {
+                        setItem(items[0])
+                    }else{
+                       console.log(orders)
+                    }
+                   
+                    console.log("finalorder: ", items[0]);
+                  }
+                })  
+        }
         
-        if (res.size > 0) {
-            const aux = res.docs.map((d) => ({id: d.id, ...d.data()}));
-            console.log(aux);
-            const items= aux.filter(items => items.date === date);
-            setItem(items[0]) 
-            console.log("final: ", items[0]);
-          }
-        })  
-    }, [date]);    
+    }, [date, orders]);    
 
     const handleClose = ()=>{
-        window.location.reload();
+        window.location.href = "/";
     };
 
     const handlePrint = ()=>{
         window.print();
     }
 
-    return item === "" ? <Loader /> : (
+    return item === "" ? <Page404 /> : (
         <div className="ventana">
             <div className="bg-light p-3 rounded border border-secondary resumen">
                 <h2 className="alert-success p-2 rounded">Tu compra fue realizada con exito!</h2>
@@ -75,7 +93,7 @@ const ViewModal = ({date}) =>{
                     onClick={()=>{handlePrint()}}
                     >              
                     <FontAwesome name="print" className='print mr-2'/>                        
-            </Button>
+                </Button>
         </div>
     );        
     

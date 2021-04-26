@@ -7,6 +7,7 @@ import ItemListContainer from "./components/itemlistcontainer/ItemListContainer"
 import NavBar from "./components/navbar/NavBar";
 import Login from "./components/login/Login"
 import Page404 from "./pages/Page404";
+import ViewModal from "./components/viewmodal/ViewModal";
 
 const Ruta = () => {
   return (
@@ -32,6 +33,8 @@ const Ruta = () => {
             <Route exact path='/item/:id' component={ItemListContainer} />
 
             <Route exact path='/login' component={Login} />
+
+            <Route exact path='/order/:orders' component={ViewModal} />
 
             <Route exact path='/' component={ItemListContainer} />
 

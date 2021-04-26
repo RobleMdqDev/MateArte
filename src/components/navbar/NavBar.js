@@ -19,9 +19,10 @@ import { NavLink } from "react-router-dom";
 import ProductContext from "../../contexts/productcontext/ProductContext";
 import Login from "../login/Login";
 import Loader from "../loader/Loader";
+import FindOrder from "../findorder/FindOrder";
 
 export default function NavBar() {
-  const { setViewLogin, user } = useContext(ProductContext);
+  const { setView, user } = useContext(ProductContext);
   const [categories, setCategories] = useState("");
   const [db] = useState(getFirestore());
 
@@ -60,13 +61,13 @@ export default function NavBar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="nav-link">
-            <NavLink to={`/nosotros`} activeClassName="currentCategory">
+            <NavLink exact to={`/nosotros`} activeClassName="currentCategory">
               Nosotros
             </NavLink>
 
-            <NavLink to={`/ofertas/${true}`} activeClassName="currentCategory">
+            <NavLink exact to={`/ofertas/${true}`} activeClassName="currentCategory">
               Ofertas
-            </NavLink>
+            </NavLink>           
 
             <NavDropdown
               title="Productos"
@@ -95,15 +96,19 @@ export default function NavBar() {
               }
 
             </NavDropdown>
+
+            <FindOrder />
+
             <NavLink
               to={"#"}
-              className=""
+              className="userLink"
               onClick={() => {
-                setViewLogin(<Login />);
+                setView(<Login />);
               }}
             >
               <FontAwesome name="user" className="user mr-2" />
               {user.name}
+              
             </NavLink>
           </Nav>
         </Navbar.Collapse>
