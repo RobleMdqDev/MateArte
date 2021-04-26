@@ -11,7 +11,7 @@ import { getFirestore } from './configs/firebase';
 
 function App() {
   const [items, setItems] = useState([]);
-  const [db, setDb] = useState(getFirestore());
+  const [db] = useState(getFirestore());
   const [user, setUser] = useState("");
   const [orderCollection, setOrderCollection] = useState("");
   const [viewLogin, setViewLogin] = useState();
@@ -34,7 +34,7 @@ function App() {
     }
     getAll();
     
-  }, []);
+  }, [db]);
 
   const addQuantity = ( quantity, index ) =>{
           

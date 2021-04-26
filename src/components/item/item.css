@@ -71,6 +71,22 @@ h3 {
     border-radius: 0 30% 30% 0;
     background-color: #f0047f;
     border: none;
+    transition: animation 1s ease;
+    
+}
+@keyframes Girar {
+    0% {
+        transform: rotateX(0deg);
+    }   
+    100% {
+        transform: rotateX(360deg);
+    }
+}
+
+#description:active{
+    
+    animation: Girar normal 0.1s linear;
+    
 }
 
 .card-one #description,

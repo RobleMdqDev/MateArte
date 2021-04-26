@@ -11,10 +11,10 @@ import { getFirestore } from "../../configs/firebase";
 export default function Login() {
 
   //HOOK PARA LOGIN CONTEXT
-  const {setUser, user, setViewLogin} = useContext(ProductContext);
+  const {setUser, setViewLogin} = useContext(ProductContext);
 
   // HOOK PARA FIRESTORE
-  const [db, setDb] = useState(getFirestore());
+  const [db] = useState(getFirestore());
 
   //HOOK PARA ESTADO DE FORMULARIO
   const [formMood, setFormMood] = useState("/login");
@@ -185,14 +185,15 @@ export default function Login() {
   
 
   return (
-       
-    <div className='login'>
-      
-      {form}
-      <Button variant="info" value='X' className="modalLogin" onClick={(e) => setViewLogin()}>
-        X
-      </Button>
-    </div>
+    <div className="backLogin">
+      <div className='login'>
+        
+        {form}
+        <Button variant="info" value='X' className="modalLogin" onClick={(e) => setViewLogin()}>
+          X
+        </Button>
+      </div>
+    </div>  
  
       
     

@@ -34,11 +34,13 @@
     margin: auto;
 }
 
+
 .dropdown-menu.show {
     display: flex;
     flex-direction: column;
     padding: 10px;
 }
+
 
 .dropdown-menu.show a {
     padding: 10px;
@@ -49,6 +51,7 @@
 .dropdown-menu.show a:hover {
     background-color: #e1e1e1;
 }
+
 
 @media (min-width: 990px) {
     .navbar img {

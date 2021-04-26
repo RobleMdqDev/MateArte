@@ -5,6 +5,7 @@ import ItemList from "../itemlist/ItemList";
 import { useParams } from "react-router";
 import ProductContext from "../../contexts/productcontext/ProductContext";
 
+
 export default function ItemListContainer() {
 
   const {items} = useContext(ProductContext)
@@ -12,7 +13,7 @@ export default function ItemListContainer() {
   const { idCategory, discounts, id } = useParams();
 
   const [auxHtml, setAuxHtml] = useState();  
-  const [style, setStyle] = useState("bg-light m-3")
+  const [style] = useState("bg-light m-3")
   
   useEffect(() => {
 
